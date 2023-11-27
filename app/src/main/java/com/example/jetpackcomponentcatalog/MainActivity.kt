@@ -5,12 +5,19 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme.colors
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.TextButton
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.MaterialTheme
@@ -23,7 +30,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -48,7 +57,7 @@ class MainActivity : ComponentActivity() {
                     //  MyTextField(myText){myText=it}
 
                     Column() {
-                        MyButtonExample()
+                        MyImageAdvance()
                     }
 
                 }
@@ -62,8 +71,29 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     JetpackcomponentcatalogTheme {
-        MyButtonExample()
+        MyImageAdvance()
     }
+}
+
+@Composable
+fun MyImageAdvance() {
+    Image(
+        painter = painterResource(id = R.drawable.oja),
+        contentDescription = "ejemplo",
+        modifier = Modifier
+            .clip(CircleShape)
+            .border(10.dp, Color.Red, CircleShape)
+    )
+}
+
+@Composable
+fun MyImage() {
+    Image(
+        painter = painterResource(id = R.drawable.ic_launcher_background),
+        contentDescription = "ejemplo",
+        alpha = 0.5f
+    )
+
 }
 
 
@@ -75,22 +105,41 @@ fun MyButtonExample() {
     Column(
         Modifier
             .fillMaxSize()
-            .padding(100.dp)
+        // .padding(2.dp)
     ) {
         Button(
             onClick = { enabled = false },
             enabled = enabled,
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.Magenta,
-                contentColor = Color.Blue
+                contentColor = Color.White
             ),
             border = BorderStroke(3.dp, Color.Green)
         ) {
+            Text(text = "Hola", color = Color.Green)
+        }
+        OutlinedButton(
+            onClick = { enabled = false },
+            enabled = enabled,
+            modifier = Modifier.padding(top = 8.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.Blue,
+                contentColor = Color.Red,
+                disabledBackgroundColor = Color.Magenta,
+                disabledContentColor = Color.Green
+            )
+        )
 
-            Text(text = "Hola")
+        {
+            Text(text = "hola")
+
+        }
+        TextButton(onClick = {}) {
+            Text(text = "Te veo", color = Color.Magenta)
 
 
         }
+
 
     }
 
