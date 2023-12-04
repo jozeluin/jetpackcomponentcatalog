@@ -109,10 +109,10 @@ class MainActivity : ComponentActivity() {
                                 Text(text = "Mostrar dialogo")
                             }
 
-                            MyDialog(
+                            MySimpleCustomDialog(
                                 show = show,
-                                onDismiss = { show = false},
-                                onConfirm = { Log.i("JoseLuis", "click") })
+                                onDismiss = { show = false}
+                               )
                         }
 
 
