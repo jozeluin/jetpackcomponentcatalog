@@ -1,9 +1,10 @@
 package com.example.jetpackcomponentcatalog
 
-import android.app.ProgressDialog.show
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -43,6 +44,7 @@ fun MyCustomDialog(
                     .fillMaxWidth()
 
             ) {
+                Text(text = "Esto es un ejemplo")
 
             }
 
@@ -107,7 +109,8 @@ fun MyAlertDialog(
 
 @Composable
 fun AccounItem(email: String, @DrawableRes drawable: Int) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(verticalAlignment = Alignment.CenterVertically,modifier=Modifier.clickable { Log.i("JoseLuis","jjjjjjjjjjjjjjjjj") }) {
+
         Image(
             painter = painterResource(id = drawable),
             contentDescription = "avatar",

@@ -1,44 +1,31 @@
 package com.example.jetpackcomponentcatalog.ui
-
 fun main() {
-    var selected: Int = 0
+    val coins: (Int) -> String = { quantity ->
+        "$quantity quarters"
+    }
 
+    val cupcake: (Int) -> String = {
+        "Have a cupcake!"
+    }
 
-    prueba(selected) { selected += it }
-    print("Estoe es lo que da selected 1 $selected")
-    prueba(selected) { selected += it }
-    print("Estoe es lo que da selected 2$selected")
-
+    val treatFunction = trickOrTreat(false, coins)
+    val trickFunction = trickOrTreat(false, cupcake)
+    treatFunction()
+    trickFunction()
+}
+fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -> String): () -> Unit {
+    if (isTrick) {
+        return trick
+    } else {
+        println(extraTreat(5))
+        return treat
+    }
+}
+val trick = {
+    println("No treats!")
 }
 
-
-fun prueba(sele: Int=0, function: (Int) -> Unit) {
-    print("Esto es el primer print ." + sele + siesdos(function(2)))
-    print( siesdos(function(2)))
-
-
-
-
-
-
-    return
+val treat = {
+    println("Have a treat!")
 }
 
-fun siesdos(function: Unit) {
-    function()
-    print("Estoy en dos ")
-    return
-}
-
-fun function():Int {
-   return 10
-}
-
-fun siestres(): Int {
-    return 3
-
-}
-
-fun siescuatro(): Int {
-    return 4
-}
