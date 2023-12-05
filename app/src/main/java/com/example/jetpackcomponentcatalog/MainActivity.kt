@@ -109,7 +109,7 @@ class MainActivity : ComponentActivity() {
                                 Text(text = "Mostrar dialogo")
                             }
 
-                            MySimpleCustomDialog(
+                            MyConfirmatiomnDialog(
                                 show = show,
                                 onDismiss = { show = false}
                                )
@@ -263,6 +263,7 @@ fun MyCard() {
         border = BorderStroke(1.dp, Color.Black)
 
     ) {
+        Text(text = "hhhhhhh")
 
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = "Ejemplo 1")

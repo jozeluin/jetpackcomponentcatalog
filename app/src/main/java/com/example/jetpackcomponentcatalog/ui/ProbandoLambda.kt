@@ -12,6 +12,9 @@ fun main() {
     val trickFunction = trickOrTreat(false, cupcake)
     treatFunction()
     trickFunction()
+
+    val operacion={a:Int->a % 2==0}
+    println(operacion(6))
 }
 fun trickOrTreat(isTrick: Boolean, extraTreat: (Int) -> String): () -> Unit {
     if (isTrick) {
@@ -28,4 +31,5 @@ val trick = {
 val treat = {
     println("Have a treat!")
 }
+
 
