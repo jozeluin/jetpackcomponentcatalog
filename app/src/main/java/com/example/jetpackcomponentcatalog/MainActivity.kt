@@ -81,45 +81,19 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetpackcomponentcatalogTheme {
                 // A surface container using the 'background' color from the theme
-                var selected by remember {
-                    mutableStateOf("JoseLuis")
-                }
+
+
                 Surface(
                     //modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 )
                 {
-                    // val myOptions = getOptions(listOf("Jose Luis", "Pepito", "Xavi"))
-                    //  MyDropDownMenu()
-                    Column() {
-                        // MytriStatusCheckBox()
-                        // myOptions.forEach {
-                        //   MyChecBoxWithTextCompleted(it)}
-
-
-                        //MyRadioButtonListl(selected) { selected = it }
-                        var numero by remember {
-                            mutableStateOf(0)
-                        }
-                        var show by remember {
-                            mutableStateOf(false)
-                        }
-                        Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                            Button(onClick = { show = true }) {
-                                Text(text = "Mostrar dialogo")
-                            }
-
-                            MyConfirmatiomnDialog(
-                                show = show,
-                                onDismiss = { show = false}
-                               )
-                        }
-
-
-                    }
-
+                    SuperHeroViGridew()
                 }
+
+
             }
+
         }
     }
 }
