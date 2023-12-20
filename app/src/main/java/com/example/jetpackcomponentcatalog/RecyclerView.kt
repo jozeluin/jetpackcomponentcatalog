@@ -59,6 +59,22 @@ fun SuperHeroView() {
     }
 
 }
+@Composable
+fun SuperHeroStickyView() {
+    val context = LocalContext.current
+    val superhero: Map<String, List<SuperHero>> = getSuperheroes().groupBy { it.publisher }
+    LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        items(getSuperheroes()) {
+            ItemHero()
+            {
+                Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+            }
+
+        }
+    }
+
+}
+
 
 @Composable
 fun SuperHeroWithSpecialControlView() {
