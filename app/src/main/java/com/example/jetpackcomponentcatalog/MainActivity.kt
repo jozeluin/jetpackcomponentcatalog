@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -74,6 +75,7 @@ import com.example.jetpackcomponentcatalog.ui.theme.JetpackcomponentcatalogTheme
 
 class MainActivity : ComponentActivity() {
 
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -86,7 +88,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 )
                 {
-                    SuperHeroWithSpecialControlView()
+                    ScaffoldExample()
                 }
 
 

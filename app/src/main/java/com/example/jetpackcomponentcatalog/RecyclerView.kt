@@ -2,14 +2,15 @@ package com.example.jetpackcomponentcatalog
 
 import android.widget.Toast
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -59,18 +60,36 @@ fun SuperHeroView() {
     }
 
 }
+
+@ExperimentalFoundationApi
 @Composable
 fun SuperHeroStickyView() {
     val context = LocalContext.current
     val superhero: Map<String, List<SuperHero>> = getSuperheroes().groupBy { it.publisher }
+
     LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-        items(getSuperheroes()) {
-            ItemHero()
-            {
-                Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+
+        superhero.forEach { (publisher, mySuperHero) ->
+
+            stickyHeader {
+                Text(
+                    text = publisher,
+                    modifier = Modifier.fillMaxWidth(). background (Color.Green),
+                    fontSize = 16.sp,
+                    color = Color.White
+                )
             }
 
+            items(mySuperHero) {
+                ItemHero(superHero = it)
+                {
+                    Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show()
+                }
+
+            }
         }
+
+
     }
 
 }
@@ -89,7 +108,7 @@ fun SuperHeroWithSpecialControlView() {
         ) {
             items(getSuperheroes()) {
                 ItemHero(superHero = it)
-                {Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show() }
+                { Toast.makeText(context, it.superheroName, Toast.LENGTH_SHORT).show() }
             }
         }
 
@@ -102,11 +121,11 @@ fun SuperHeroWithSpecialControlView() {
 }
 
 
-
 @Composable
 fun SuperHeroViGridew() {
     val context = LocalContext.current
-    LazyVerticalGrid(columns = GridCells.Fixed(2),
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         content = {
@@ -131,7 +150,7 @@ fun ItemHero(superHero: SuperHero, onItemSelected: (SuperHero) -> Unit) {
 
 
         modifier = Modifier
-            .width(200.dp)
+            .fillMaxWidth()
             .clickable { onItemSelected(superHero) }) {
         Column() {
             Image(
