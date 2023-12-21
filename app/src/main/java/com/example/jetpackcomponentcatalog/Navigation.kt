@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.NavHostController
+import com.example.jetpackcomponentcatalog.model.Routes
 import com.example.jetpackcomponentcatalog.model.Routes.Pantalla2
 import com.example.jetpackcomponentcatalog.model.Routes.Pantalla3
 
@@ -30,7 +31,7 @@ fun Screeen2(navController: NavHostController){
     Box (
         modifier= Modifier
             .fillMaxSize()
-            .background(Color.Cyan)
+            .background(Color.Blue)
 
     ){
         Text(text = "Pantalla 2", modifier = Modifier.align(Alignment.Center).clickable { navController.navigate(
@@ -43,10 +44,39 @@ fun Screeen3(navController: NavHostController){
     Box (
         modifier= Modifier
             .fillMaxSize()
-            .background(Color.Cyan)
+            .background(Color.Magenta)
 
     ){
-        Text(text = "Pantalla 3", modifier = Modifier.align(Alignment.Center))
+        Text(text = "Pantalla 3", modifier = Modifier.align(Alignment.Center).clickable { navController.navigate("pantalla4/2") })
+
+    }
+}
+
+@Composable
+fun Screeen4(navController: NavHostController,age:Int){
+    Box (
+        modifier= Modifier
+            .fillMaxSize()
+            .background(Color.White)
+
+    ){
+        Text(text = "Tengo $age años", modifier = Modifier.align(Alignment.Center).clickable { navController.navigate(
+          Routes.Pantalla5.createRoute("JoseLuis")
+          //  "pantalla5"
+        ) })
+
+    }
+}
+
+@Composable
+fun Screeen5(navController: NavHostController,name:String? ){
+    Box (
+        modifier= Modifier
+            .fillMaxSize()
+            .background(Color.Green)
+
+    ){
+        Text(text = "Me llamo $name", modifier = Modifier.align(Alignment.Center))
 
     }
 }
