@@ -1,12 +1,18 @@
 package com.example.jetpackcomponentcatalog
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -59,5 +65,29 @@ fun SizeAnimation() {
         .size(size)
         .background(Color.Cyan)
         .clickable { smallSize = !smallSize })
+
+}
+
+@Composable
+fun VisisbilityAnimation(){
+    var isVisible by rememberSaveable {
+        mutableStateOf(true)
+    }
+
+Column(Modifier.fillMaxSize()) {
+    Button(onClick = {isVisible=!isVisible}){
+        Text("Mostrar/Ocultar")
+
+    }
+    
+    Spacer(modifier = Modifier.size(50.dp))
+
+    AnimatedVisibility(isVisible){
+        Box (Modifier.size(150.dp).background(Color.Red))
+    }
+
+
+}
+
 
 }
