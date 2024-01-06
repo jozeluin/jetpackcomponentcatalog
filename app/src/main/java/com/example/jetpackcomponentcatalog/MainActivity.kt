@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                 )
                 {
 
-                    VisisbilityAnimation()
+                    CrossfadeExampleAnimation()
 
                 }
 
