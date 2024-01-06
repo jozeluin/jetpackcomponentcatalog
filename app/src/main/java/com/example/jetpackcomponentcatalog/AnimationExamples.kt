@@ -1,6 +1,7 @@
 package com.example.jetpackcomponentcatalog
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,20 +24,35 @@ fun ColorAnimationSimple() {
     }
 
     var showBox by rememberSaveable {
-        mutableStateOf(true)}
+        mutableStateOf(true)
+    }
 
     val realColor by animateColorAsState(
         targetValue = if (firstColor) Color.Red else Color.Yellow,
         label = "Etiqueta Descriptiva",
         animationSpec = tween(durationMillis = 2000),
-        finishedListener = {showBox=false}
+        finishedListener = { showBox = false }
     )
-if(showBox) {
-    Box(modifier = Modifier
-        .size(100.dp)
-        .background(realColor)
-        .clickable { firstColor = !firstColor })
+    if (showBox) {
+        Box(modifier = Modifier
+            .size(100.dp)
+            .background(realColor)
+            .clickable { firstColor = !firstColor })
+    }
+
+
 }
 
+@Composable
+fun SizeAnimation() {
+    var smallSize by rememberSaveable {
+        mutableStateOf(true)
+    }
+    val size by animateDpAsState(targetValue =  if (smallSize) 50.dp else 100.dp)
+
+    Box(modifier = Modifier
+        .size(size)
+        .background(Color.Cyan)
+        .clickable { smallSize=!smallSize})
 
 }

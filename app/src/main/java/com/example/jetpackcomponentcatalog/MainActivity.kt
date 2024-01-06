@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                 )
                 {
 
-                    ColorAnimationSimple()
+                    SizeAnimation()
 
                 }
 
